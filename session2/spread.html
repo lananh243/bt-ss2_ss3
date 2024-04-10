@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // tham chiếu : reference type array object function
+        let numbers = [5,6,7,8,9];
+        let newArr = [...numbers];//gán địa chỉ
+        console.log(newArr);
+        let newArr1 = numbers;// tạo địa chỉ ô nhớ mới
+        let a = [];
+        let b = [];
+        console.log(a==b);
+        numbers.push(4);
+        console.log(newArr1);
+        let newArr2 = [...numbers];
+        numbers.push(4);
+        console.log("1111",newArr2);
+        let obj = {
+             name: "minh",
+             address: "hn",
+             age: 18,
+             phone: "6888278",
+             email: "minh@gmail.com"
+        }
+        obj.name = "hoa"
+        let obj1 = {...obj};// tạo ra địa chỉ mới
+        console.log(obj1);
+        console.log(obj == obj1);//so sánh 2 địa chỉ
+    </script>
+</body>
+</html>
