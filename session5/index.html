@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container{
+        display: inline-flex;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The word is : <span id="stars">***</span></h1>
+    <div class="container">
+      <input id="input" type="text" />
+      <span style="margin-left: 50px;">Remaining guess : <span id="number">0</span></span>
+    </div>
+    <br><br>
+    <button style="margin-top: 25px" id="play" onclick="start()">Guess</button>
+    <button id="replay">Chơi lại</button>
+  </body>
+  <script>
+    let starElement = document.getElementById("stars");
+    let array = ["hoa", "hao", "han", "nam", "anh", "tan", "thu", "tai", "tho"];
+    let countElement = document.getElementById("number");
+    let count = 3;
+    let inputElement = document.getElementById("input");
+    let startElement = document.getElementById("play");
+    let playAgain = document.getElementById("replay")
+    document.getElementById("replay").style.display = 'none';
+    // Lấy chỉ số ngẫu nhiên
+    let index = Math.floor(Math.random() * array.length);
+
+    // Phần tử ngẫu nhiên của mảng
+    let element = array[index];
+    console.log(element);
+
+    // Độ dài của phần tử ngẫu nhiên
+    let elementLength = element.length;
+
+    let text = "";
+
+    // Lặp qua để hiển thị số sao tương ứng với độ dài của phần tử ngẫu nhiên
+    for (let i = 0; i < elementLength; i++) {
+      text += " * ";
+    }
+    starElement.innerHTML = text;
+    console.log(text);
+
+    
+    function start() {
+      let guess = inputElement.value;
+      if (guess === element) {
+        starElement.innerHTML = element;
+        starElement.setAttribute('readonly', 'true');
+        alert("Bạn đã chiến thắng vang dội !!!")
+      } else {
+        count--;
+        countElement.innerHTML = count;
+        if (count === 0) {
+          starElement.innerHTML = element;
+          starElement.setAttribute('readonly', 'true');
+          alert('Game Over');
+          play.style.display = 'none';
+          replay.style.display = 'block';
+        }
+      }
+    }
+
+  function resetGame() {
+    starElement.innerHTML = "***";
+    starElement.removeAttribute('readonly');
+    inputElement.value = "";
+    count = 3;
+    countElement.innerHTML = count;
+    replay.style.display = 'none';
+    play.style.display = 'block';
+  }
+  resetGame();
+  replay.addEventListener('click', resetGame);
+  
+  </script>
+</html>
