@@ -17,3 +17,12 @@ let obj3 = {
     phone: "555",
     email: 'hong@gmail.com'
 };
+// type let user = string | number :Kiểu alias(bí danh)
+// tuple
+let array = ["hoa", 5];
+let array1;
+array1 = [3, "hoan"];
+array1.push(6);
+// 2 cách thêm thuộc tính cho đối tượng
+// đối tượng . thuộc tính
+// userA["abc"] = 5;
