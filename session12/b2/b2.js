@@ -1,0 +1,27 @@
+"use strict";
+class Employee2 {
+    constructor(name, company, phone) {
+        this.name = name;
+        this.company = company;
+        this.phone = phone;
+    }
+    getPhone() {
+        return this.phone;
+    }
+    printInfo() {
+        console.log(`Tên nhân viên: ${this.name}`);
+        console.log(`Tên công ty: ${this.company}`);
+        console.log(`Số điện thoại: ${this.phone}`);
+    }
+}
+class Manager1 extends Employee2 {
+    constructor(name, company, phone, teamSize) {
+        super(name, company, phone);
+        this.teamSize = teamSize;
+    }
+    printInfo() {
+        return `Tên nhân viên: ${this.name} ; Tên công ty: ${this.company} ; Số điện thoại: ${this.getPhone()} ; Kích thước: ${this.teamSize}`;
+    }
+}
+let manager1 = new Manager1("nam", "điện tử", "5664565", 80);
+console.log(manager1.printInfo());
