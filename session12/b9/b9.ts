@@ -1,49 +1,52 @@
 class Shape {
     constructor() {}
-   
-    calculateArea(): number {
-      return 0;
+    overloading(a: number, b?: number): string {
+      if (b) {
+        let area = a * b;
+        let perimeter = 2 * (a + b);
+        return `Diện tích hình chữ nhật là: ${area}, Chu vi hình chữ nhật là: ${perimeter}`;
+      } else {
+        let area = Math.PI * a * a;
+        let circumference = 2 * Math.PI * a;
+        return `Diện tích hình tròn là: ${area}, Chu vi hình tròn là: ${circumference}`;
+      }
     }
-   
-    calculatePerimeter(): number {
-      return 0;
+  }
+  
+  class Rectangle1 extends Shape {
+    private width: number;
+    private height: number;
+  
+    constructor(width: number, height: number) {
+      super();
+      this.width = width;
+      this.height = height;
     }
-}
-class Rectangle1 extends Shape {
-    private width : number
-    private height : number
-    constructor(width:number, height:number){
-        super()
-        this.width = width;
-        this.height = height
+  
+    getWidth() {
+      return this.width;
     }
-    calculateArea(): number {
-        return this.width * this.height;
+  
+    getHeight() {
+      return this.height;
     }
-    
-    calculatePerimeter(): number {
-        return 2 * (this.width + this.height);
+  }
+  
+  class Circle1 extends Shape {
+    private radius: number;
+  
+    constructor(radius: number) {
+      super();
+      this.radius = radius;
     }
-}
-class Circle1 extends Shape {
-    private radius: number
-    constructor(radius:number){
-        super()
-        this.radius = radius;
+  
+    getRadius() {
+      return this.radius;
     }
-    calculateArea(): number {
-        return Math.PI * this.radius * this.radius;
-    }
-     
-    calculatePerimeter(): number {
-        return 2 * Math.PI * this.radius;
-    }
-}
-let rectangle1 = new Rectangle1(2, 10);
-let circle1 = new Circle1(3);
-console.log("Diện tích hình chữ nhật:", rectangle1.calculateArea());
-console.log("Chu vi hình chữ nhật:", rectangle1.calculatePerimeter());
- 
-console.log("Diện tích hình tròn:", circle1.calculateArea());
-console.log("Chu vi hình tròn:", circle1.calculatePerimeter());
- 
+  }
+  
+  let rectangle1 = new Rectangle1(4, 4);
+  let circle1 = new Circle1(6);
+  
+  console.log(rectangle1.overloading(rectangle1.getWidth(), rectangle1.getHeight()));
+  console.log(circle1.overloading(circle1.getRadius()));

@@ -14,8 +14,7 @@ class Employee1 {
         console.log(`Tên nhân viên: ${this.name}`);
         console.log(`Tên công ty: ${this.company}`);
         console.log(`Số điện thoại: ${this.phone}`);  
-    }
-   
+    }  
 }
 class Manager extends Employee1 {
     teamSize: number
@@ -27,8 +26,7 @@ class Manager extends Employee1 {
         console.log(`Tên nhân viên: ${this.name}`);
         console.log(`Tên công ty: ${this.company}`);
         console.log(`Số điện thoại: ${this.getPhone()}`);  
-        console.log(`Kích thước: ${this.teamSize}`);
-        
+        console.log(`Kích thước: ${this.teamSize}`);  
     }
 }
 let manager = new Manager ("bang", "công nghệ", "026382472647", 30);

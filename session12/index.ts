@@ -3,7 +3,7 @@
     là tính chất thể hiện bởi class con kế thừa class cha thì sẽ có các thuộc tính và phương thức của lớp cha
     Giúp tái sử dụng lại đoạn code
     1 class con có thể kế thừa bao nhiêu class cha
-    ==> 1 con
+    ==> 1 cha
     1 class cha có thể cho bao nhiêu class con kế thừa
     ==> nhiều
     Khai báo class cha
