@@ -26,6 +26,9 @@ class Member {
         this.books = [];
         this.status = status;
     }
+    borrowBook(id: number, stock:number){
+        
+    }
 }
 
 class LendedBook {

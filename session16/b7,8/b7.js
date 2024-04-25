@@ -14,13 +14,21 @@ class Student4 {
         this.name = newName;
     }
 }
+// tao mang
+let studentAll = [];
 class Classroom {
     constructor() {
         this.students = [];
         this.students = [];
     }
-    addStudent(student) {
-        this.students.push(student);
+    addStudent() {
+        // this.students.push(student);
+        // thêm học sinh 
+        for (let i = 0; i < studentAll.length; i++) {
+            this.students.push(studentAll[i]);
+        }
+        // sau khi them xong thi xoa het
+        studentAll.length = 0;
     }
     showStudents() {
         for (const student of this.students) {
@@ -28,49 +36,57 @@ class Classroom {
             console.log("Name:", student.getName());
         }
     }
-    removeStudent(studentId, allStds) {
+    removeStudent(studentId) {
         let studentIndex = this.students.findIndex((student) => student.getId() === studentId);
         if (studentIndex !== -1) {
-            let student = this.students.splice(studentIndex, 1)[0];
-            allStds.push(student);
+            let student = this.students[studentIndex];
+            this.students.splice(studentIndex, 1);
+            console.log("Sinh viên được xóa là: ", student);
         }
         else {
-            console.log("Không tồn tại sinh viên trong lớp");
+            console.log("Không tìm thấy sinh viên có studentId = ", studentId);
         }
+    }
+    getStd() {
+        console.log(this.students);
     }
     editStudent(studentId, newName) {
         let student = this.students.find((student) => student.getId() === studentId);
         if (student) {
             student.setName(newName);
+            console.log("Sinh viên được chỉnh sửa thành công:", student);
         }
         else {
             console.log("Không tồn tại sinh viên trong lớp");
         }
     }
 }
-let allStds = [
+// tạo thực thể student
+let studentAll2 = [
     new Student4(1, "mai"),
     new Student4(2, "lan"),
     new Student4(3, "phan"),
-    new Student4(4, "bích"),
-    new Student4(5, "phượng"),
-    new Student4(6, "trương")
 ];
+studentAll = [...studentAll2];
+// tạo thực thể class
 let classroom1 = new Classroom();
-let classroom2 = new Classroom();
-for (let i = 0; i < 3; i++) {
-    classroom1.addStudent(allStds[i]);
-}
-for (let i = 3; i < 6; i++) {
-    classroom2.addStudent(allStds[i]);
-}
+classroom1.addStudent();
 console.log("Classroom 1:");
+classroom1.removeStudent(1); // Xóa sinh viên
 classroom1.showStudents();
+classroom1.editStudent(3, "Bình"); // Sửa thông tin
+classroom1.showStudents();
+let studentAll3 = [
+    new Student4(1, "mai"),
+    new Student4(2, "lan"),
+    new Student4(3, "phan"),
+];
+studentAll = [...studentAll3];
+// tạo thực thể class
+let classroom2 = new Classroom();
+classroom2.addStudent();
 console.log("Classroom 2:");
+classroom2.removeStudent(3); // xóa sinh viên
 classroom2.showStudents();
-classroom1.removeStudent(1, allStds);
-console.log("Sau khi xóa sinh viên:");
-classroom1.showStudents();
-classroom1.editStudent(1, "nhan");
-console.log("Chỉnh sửa thông tin sinh viên:");
-classroom1.showStudents();
+classroom2.editStudent(2, "Nga"); // sửa thông tin
+classroom2.showStudents();
